@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:53:26 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/11 17:37:34 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/11 19:45:28 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ Fixed::Fixed(int const num) {
 // Float Constructor
 Fixed::Fixed(const float num) {
     cout << "Float Constructor Called" << endl;
-    
+    fpn = roundf(num * (1 << bits));
 }
 
 // Copy Constructor
-Fixed::Fixed(Fixed &oth) {
+Fixed::Fixed(const Fixed &oth) {
     cout << "Copy Constructor Called" << endl;
     Fixed::operator=(oth);
 }
 
 // Operator Overloading (=)
-Fixed &Fixed::operator=(Fixed &oth) {
+Fixed &Fixed::operator=(const Fixed &oth) {
     cout << "Copy Assignment Operator Called" << endl;
     fpn = oth.getRawBits();
     return *this;
@@ -47,13 +47,19 @@ Fixed &Fixed::operator=(Fixed &oth) {
 Fixed::~Fixed() { cout << "Destructor Called" << endl; }
 
 // getter
-int Fixed::getRawBits() const {
-    cout << "getRawBits member function called" << endl;
-    return fpn;
-}
+int Fixed::getRawBits() const { return fpn; }
 
 // setter
 void Fixed::setRawBits(int const raw) {
     fpn = raw;
     cout << "setRawBits member function called" << endl;
 }
+
+ostream &operator<<(ostream &o, const Fixed &oth) {
+    o << oth.toFloat();
+    return o;
+}
+
+int Fixed::toInt() const { return fpn >> bits; }
+
+float Fixed::toFloat() const { return (float)fpn / (float)(1 << bits); }
