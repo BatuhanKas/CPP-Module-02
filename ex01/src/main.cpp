@@ -6,7 +6,14 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:33:27 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/11 15:33:28 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/11 17:03:21 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../inc/Fixed.hpp"
+
+int main() {
+    Fixed f(38);
+    int x = f.getRawBits() >> 8;
+    cout << x << endl;
+}
