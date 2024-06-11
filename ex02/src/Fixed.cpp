@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:53:26 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/11 20:33:43 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/11 20:38:16 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ ostream &operator<<(ostream &o, const Fixed &oth) {
     return o;
 }
 
+// Comparision
 bool Fixed::operator>(const Fixed &oth) const {
     return fpn > oth.fpn ? true : false;
 }
@@ -82,4 +83,9 @@ bool Fixed::operator==(const Fixed &oth) const {
 
 bool Fixed::operator!=(const Fixed &oth) const {
     return fpn != oth.fpn ? true : false;
+}
+
+// Arithmetic
+void Fixed::operator+() {
+    fpn += 1;
 }
