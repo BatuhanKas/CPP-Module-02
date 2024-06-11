@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:50:02 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/11 20:10:24 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/11 20:28:57 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ class Fixed {
     Fixed(const float num);
     Fixed(const Fixed &oth);
     ~Fixed();
-    Fixed &operator=(const Fixed &oth);
     int getRawBits() const;
     void setRawBits(int const raw);
     int toInt() const;
     float toFloat() const;
+
+    // Overloading Functions
+    Fixed &operator=(const Fixed &oth);
+    bool operator>(const Fixed &oth) const;
+    bool operator<(const Fixed &oth) const;
+    bool operator>=(const Fixed &oth) const;
+    bool operator<=(const Fixed &oth) const;
+    bool operator==(const Fixed &oth) const;
+    bool operator!=(const Fixed &oth) const;
 };
 
 ostream &operator<<(ostream &o, const Fixed &oth);
