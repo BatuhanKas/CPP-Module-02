@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:50:02 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/12 12:30:03 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/12 14:55:17 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class Fixed {
     int toInt() const;
     float toFloat() const;
 
-    // Overloading Functions
+    /* Overloading Functions */
+
     // Comparision
     Fixed &operator=(const Fixed &oth);
     bool operator>(const Fixed &oth) const;
@@ -58,6 +59,14 @@ class Fixed {
     Fixed operator-(const Fixed &oth) const;
     Fixed operator*(const Fixed &oth) const;
     Fixed operator/(const Fixed &oth) const;
+
+    // Max Operators
+    static Fixed &max(Fixed &oth1, Fixed &oth2);
+    static const Fixed &max(const Fixed &oth1, const Fixed &oth2);
+
+    // Min Operators
+    static Fixed &min(Fixed &oth1, Fixed &oth2);
+    static const Fixed &min(const Fixed &oth1, const Fixed &oth2);
 };
 
 ostream &operator<<(ostream &o, const Fixed &oth);

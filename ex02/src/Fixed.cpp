@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:53:26 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/12 12:33:36 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/12 15:21:54 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ Fixed &Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
     Fixed tmp = *this;
-    fpn--;
+    --fpn;
     return tmp;
 }
 
@@ -108,4 +108,22 @@ Fixed Fixed::operator*(const Fixed &oth) const {
 
 Fixed Fixed::operator/(const Fixed &oth) const {
     return this->toFloat() / oth.toFloat();
+}
+
+// Max Operators
+Fixed &Fixed::max(Fixed &oth1, Fixed &oth2) {
+    return oth1.toFloat() > oth2.toFloat() ? oth1 : oth2;
+}
+
+const Fixed &Fixed::max(const Fixed &oth1, const Fixed &oth2) {
+    return oth1.toFloat() > oth2.toFloat() ? oth1 : oth2;
+}
+
+// Min Operators
+Fixed &Fixed::min(Fixed &oth1, Fixed &oth2) {
+    return oth1.toFloat() < oth2.toFloat() ? oth1 : oth2;
+}
+
+const Fixed &Fixed::min(const Fixed &oth1, const Fixed &oth2) {
+    return oth1.toFloat() < oth2.toFloat() ? oth1 : oth2;
 }
