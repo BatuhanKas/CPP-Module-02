@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:25:04 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/13 14:23:32 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/13 14:59:50 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main() {
     Point a(1, 1);
     Point b(2, 5);
     Point c(5, 4);
-    Point p(4, 5);
+    Point p(3, 2.5);
 
     if (bsp(a, b, c, p))
         cout << "Point " << CYAN << "<p> " << RESET << "is " << GREEN
