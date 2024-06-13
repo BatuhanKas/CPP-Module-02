@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:25:55 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/12 19:55:34 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/13 12:59:24 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,43 @@
 
 /* **************************** [^] INCLUDES [^] **************************** */
 
-/* ************************* [v] CROSS PRODUCT [v] ************************* */
+/* ********************** [v] CALCULATE FUNCTIONS [v] ********************** */
 
-static float crossProduct(Point const &a, Point const &b, Point const &c) {
-    return (b.getX() - a.getX()).toFloat() * (c.getY() - a.getY()).toFloat() -
-           (b.getY() - a.getY()).toFloat() * (c.getX() - a.getX()).toFloat();
+static Fixed calculateABS(Fixed value) {
+    return value < 0 ? value * -1 : value;
 }
 
-bool bsp(Point const a, Point const b, Point const c, Point const point) {
-    bool b1, b2, b3;
-
-    b1 = crossProduct(point, a, b) < 0;
-    b2 = crossProduct(point, b, c) < 0;
-    b3 = crossProduct(point, c, a) < 0;
-
-    if (b1 * b2 * b3 == 0) return false;
-
-    return ((b1 == b2) && (b2 == b3));
+static Fixed Determinant2x2(Point const a, Point const b) {
+    return (a.getX() * b.getY()) - (a.getY() * b.getX());
 }
 
-/* ************************* [^] CROSS PRODUCT [^] ************************* */
+static Fixed calculateArea(Point const a, Point const b, Point const c) {
+    Fixed ab = Determinant2x2(a, b);
+    Fixed bc = Determinant2x2(b, c);
+    Fixed ca = Determinant2x2(c, a);
+
+    Fixed area = calculateABS((ca + bc + ab) / 2);
+    return area;
+}
+
+/* ********************** [^] CALCULATE FUNCTIONS [^] ********************** */
+
+/* ****************************** [v] BSP [v] ****************************** */
+
+bool bsp(Point const a, Point const b, Point const c, Point const p) {
+    Fixed abp = calculateArea(a, b, p);
+    Fixed acp = calculateArea(a, c, p);
+    Fixed bcp = calculateArea(b, c, p);
+    Fixed abc = calculateArea(a, b, c);
+
+    cout << "acp: " << acp << endl;
+    cout << "bcp: " << bcp << endl;
+    cout << "abp: " << abp << endl;
+    cout << "abc: " << abc << endl;
+
+    if (abp != 0 && acp != 0 && bcp != 0)
+        if (abp + acp + bcp == abc) return (true);
+    return (false);
+}
+
+/* ****************************** [^] BSP [^] ****************************** */

@@ -6,13 +6,14 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:53:26 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/12 15:24:51 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/12 20:03:10 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Fixed.hpp"
 
-// Constructors
+/* ************************** [v] CONSTRUCTORS [v] ************************** */
+
 Fixed::Fixed() { fpn = 0; }
 
 Fixed::Fixed(int const num) { fpn = num << bits; };
@@ -21,10 +22,12 @@ Fixed::Fixed(const float num) { fpn = roundf(num * (1 << bits)); }
 
 Fixed::Fixed(const Fixed &oth) { Fixed::operator=(oth); }
 
-// Destructor
 Fixed::~Fixed() {}
 
-// Get and Set
+/* ************************** [^] CONSTRUCTORS [^] ************************** */
+
+/* *************************** [v] GET && SET [v] *************************** */
+
 int Fixed::getRawBits() const { return fpn; }
 
 void Fixed::setRawBits(int const raw) { fpn = raw; }
@@ -33,7 +36,10 @@ int Fixed::toInt() const { return fpn >> bits; }
 
 float Fixed::toFloat() const { return (float)fpn / (float)(1 << bits); }
 
-// Operator Overloadings
+/* *************************** [^] GET && SET [^] *************************** */
+
+/* ********************* [v] OPERATOR OVERLOADINGS [v] ********************* */
+
 Fixed &Fixed::operator=(const Fixed &oth) {
     fpn = oth.getRawBits();
     return *this;
@@ -44,7 +50,10 @@ ostream &operator<<(ostream &o, const Fixed &oth) {
     return o;
 }
 
-// Comparision
+/* ********************* [^] OPERATOR OVERLOADINGS [^] ********************* */
+
+/* ************************** [v] COMPARISION [v] ************************** */
+
 bool Fixed::operator>(const Fixed &oth) const {
     return fpn > oth.fpn ? true : false;
 }
@@ -69,7 +78,10 @@ bool Fixed::operator!=(const Fixed &oth) const {
     return fpn != oth.fpn ? true : false;
 }
 
-// Post & Pre Increment Operators
+/* ************************** [^] COMPARISION [^] ************************** */
+
+/* ********************* [v] POST && PRE INCREMENTS [v] ********************* */
+
 Fixed &Fixed::operator++() {
     ++fpn;
     return *this;
@@ -81,7 +93,10 @@ Fixed Fixed::operator++(int) {
     return tmp;
 }
 
-// Post & Pre Decrement Operators
+/* ********************* [^] POST && PRE INCREMENTS [^] ********************* */
+
+/* ********************* [v] POST && PRE DECREMENTS [v] ********************* */
+
 Fixed &Fixed::operator--() {
     --fpn;
     return *this;
@@ -93,7 +108,10 @@ Fixed Fixed::operator--(int) {
     return tmp;
 }
 
-// Arithmethic Operators
+/* ********************* [^] POST && PRE DECREMENTS [^] ********************* */
+
+/* ********************** [v] ARITHMETIC OPERATORS [v] ********************** */
+
 Fixed Fixed::operator+(const Fixed &oth) const {
     return this->toFloat() + oth.toFloat();
 }
@@ -110,7 +128,10 @@ Fixed Fixed::operator/(const Fixed &oth) const {
     return this->toFloat() / oth.toFloat();
 }
 
-// Max Operators
+/* ********************** [^] ARITHMETIC OPERATORS [^] ********************** */
+
+/* ********************** [v] MAX && MIN OPERATORS [v] ********************** */
+
 Fixed &Fixed::max(Fixed &oth1, Fixed &oth2) {
     return oth1.toFloat() > oth2.toFloat() ? oth1 : oth2;
 }
@@ -127,3 +148,5 @@ Fixed &Fixed::min(Fixed &oth1, Fixed &oth2) {
 const Fixed &Fixed::min(const Fixed &oth1, const Fixed &oth2) {
     return oth1.toFloat() < oth2.toFloat() ? oth1 : oth2;
 }
+
+/* ********************** [^] MAX && MIN OPERATORS [^] ********************** */
