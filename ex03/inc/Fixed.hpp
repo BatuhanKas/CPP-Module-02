@@ -6,7 +6,7 @@
 /*   By: bkas <bkas@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:50:02 by bkas              #+#    #+#             */
-/*   Updated: 2024/06/12 17:04:36 by bkas             ###   ########.fr       */
+/*   Updated: 2024/06/13 14:05:27 by bkas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::ostream;
+
+#define RED "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define CYAN "\033[0;36m"
+#define RESET "\033[0m"
 
 class Fixed {
    private:
