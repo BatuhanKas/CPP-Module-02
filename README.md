@@ -33,9 +33,9 @@ Burada bildigimiz operator overloading islemlerini yaptim.
 
 ++p ve p++ gibi pre increment / post increment operatorleri acikladim.
 
-https://alike-dirigible-d37.notion.site/unsupported-browser.html
+[https://alike-dirigible-d37.notion.site/unsupported-browser.html](https://alike-dirigible-d37.notion.site/CPP-Notlarim-86e5660b50d740b5bd6b8803c8ae99f0)
 
-yukaridaki link benim cpp notlarim. Cogu seyi yukaridaki linkte anlattim. Daha sonra burayi tekrar duzenleyecegim.
+yukaridaki link benim cpp notlarim. Cogu seyi yukaridaki linkte anlattim. Daha sonra burayi tekrar duzenleyecegim. Sagdaki Scroll'u kaydirarak gerekli yere direkt olarak ulasabilirsin.
 
 Sadece bu kisimda detayli bir sekilde aciklayacagim.
 
