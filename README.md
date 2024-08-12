@@ -56,3 +56,8 @@ Fakat Noktanin alani ile ucgenin alani esit degilse, Nokta ucgenin icinde degild
 Ozellikle ucgenin koselerine ya da dogrunun uzerine gelip gelmedigi durumlarida kontrol ettim hepsi calisiyor.
 
 2x2 Determinant kullandim Hepsi Excalidrawda var.
+
+Linkler:
+https://www.geogebra.org/calculator
+https://excalidraw.com/
+
